@@ -3,6 +3,7 @@ import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
+import { sendEmail } from "@/helpers/mailer";
 
 // REMOVE the top-level await connect() call!
 // Instead, we'll call connect() inside the handler
@@ -39,6 +40,13 @@ export async function POST(request: NextRequest) {
         // Save user to database
         const savedUser = await newUser.save();
         console.log("User saved:", savedUser);
+        // Send verification email (optional)
+        await sendEmail({
+            email,emailType: "VERIFY", userId: savedUser._id
+            
+        })
+
+
 
         // Return success response
         return NextResponse.json({
