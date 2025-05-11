@@ -22,6 +22,7 @@ export default function SignupPage() {
             const response = await axios.post("/api/users/signup",user);
             console.log("Signup Success" , response.data);
             router.push("/login");
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error:any) {
             console.log("SignUp failed" , error.message);
             toast.error(error.message);

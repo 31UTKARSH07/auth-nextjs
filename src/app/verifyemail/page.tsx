@@ -13,6 +13,7 @@ export default function VerifyEmailPage() {
     try {
       await axios.post('/api/users/verifyemail', { token })
       setVerified(true)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setError(true)
       console.log(error.response?.data)
@@ -23,7 +24,7 @@ export default function VerifyEmailPage() {
   useEffect(() => {
     const urlToken = window.location.search.split('=')[1]
     setToken(urlToken || "")
-  }, [])
+  })
 
   // ✅ Runs whenever token is set
   useEffect(() => {

@@ -58,6 +58,7 @@ export async function POST(request: NextRequest) {
                 email: savedUser.email
             }
         }, { status: 201 }); // Add status code 201 for resource creation
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         console.error("Signup error:", error);
         return NextResponse.json({ error: error.message }, { status: 500 });

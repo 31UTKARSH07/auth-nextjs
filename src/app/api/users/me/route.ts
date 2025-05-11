@@ -15,6 +15,7 @@ export async function GET(request: NextRequest) {
             message: "User found",
             data: user,
         }, { status: 200 })
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         console.error("Error fetching user data:", error);
         return NextResponse.json({ error: error.message },

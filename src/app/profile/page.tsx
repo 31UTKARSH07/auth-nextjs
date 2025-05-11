@@ -14,6 +14,7 @@ export default function ProfilePage() {
             await axios.get("/api/users/logout")
             toast.success("Logout Successful");
             router.push("/login");
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             console.log("LOGOUT ERROR", error.message);
             toast.error(error.message)
@@ -30,6 +31,7 @@ export default function ProfilePage() {
           const res = await axios.get("/api/users/me");
           console.log("User Details response:", res);
           setData(res.data.data._id);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
           console.error("GET /api/users/me failed:", err.response?.status, err.message);
           toast.error("Could not load profile");

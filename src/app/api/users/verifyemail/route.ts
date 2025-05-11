@@ -26,6 +26,7 @@ export async function POST(req: NextRequest) {
             message: "Email verified successfully",
             success: true
         });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
